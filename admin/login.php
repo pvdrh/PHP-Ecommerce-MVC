@@ -5,7 +5,7 @@ include '../classes/adminlogin.php';
 $class = new adminlogin();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminUser = $_POST['adminUser'];
-    $adminPass = $_POST['adminPass'];
+    $adminPass = md5($_POST['adminPass']);
 
     $login_check = $class->login_admin($adminUser, $adminPass);
 }
@@ -21,6 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <section id="content">
         <form action="login.php" method="post">
             <h1>Admin Login</h1>
+            <span>
+                <?php if (isset($login_check)) {
+                    echo $login_check;
+                }
+                ?></span>
             <div>
                 <input type="text" placeholder="Username" required="" name="adminUser"/>
             </div>

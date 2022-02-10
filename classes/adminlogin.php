@@ -27,15 +27,15 @@ class adminlogin
             $alert = "User and password must be not empty!";
             return $alert;
         } else {
-            $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass' LIMIT 1";
+            $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass'";
             $result = $this->db->select($query);
 
             if ($result != false) {
                 $value = $result->fetch_assoc();
-                Session::set('adminlogin', true);
-                Session::set('adminId', value['adminId']);
-                Session::set('adminUser', value['adminUser']);
-                Session::set('adminName', value['adminName']);
+                Session::set('adminLogin', true);
+                Session::set('adminId', $value['adminId']);
+                Session::set('adminUser', $value['adminUser']);
+                Session::set('adminName', $value['adminName']);
                 header('Location:index.php');
             } else {
                 $alert = "User and Pass not match!";

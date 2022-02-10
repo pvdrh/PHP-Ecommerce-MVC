@@ -35,7 +35,7 @@ class Session
     public static function checkSession()
     {
         self::init();
-        if (self::get("login") == false) {
+        if (self::get("adminLogin") == false) {
             self::destroy();
             header("Location:login.php");
         }
