@@ -73,6 +73,19 @@ class category
             }
         }
     }
+
+    public function delete_category($id)
+    {
+        $query = "DELETE FROM tbl_category WHERE catId = '$id'";
+        $result = $this->db->delete($query);
+        if ($result) {
+            $alert = "<span class='success'>Xóa thành công.</span>";
+            return $alert;
+        } else {
+            $alert = "<span class='error'>Xóa thất bại!</span>";
+            return $alert;
+        }
+    }
 }
 
 ?>

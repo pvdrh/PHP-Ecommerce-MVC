@@ -7,7 +7,6 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
     echo "<script>window.location = 'catlist.php'</script>";
 } else {
     $id = $_GET['catid'];
-
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $catName = $_POST['catName'];
